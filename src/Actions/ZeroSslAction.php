@@ -1,14 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton\Actions;
+namespace Astrogoat\ZeroSsl\Actions;
 
 use Helix\Lego\Apps\Actions\Action;
 
-class SkeletonAction extends Action
+class ZeroSslAction extends Action
 {
     public static function actionName(): string
     {
-        return 'Skeleton action name';
+        return 'ZeroSsl action name';
     }
 
     public static function run(): mixed

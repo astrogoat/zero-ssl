@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Settings;
+namespace Astrogoat\ZeroSsl\Settings;
 
 use Helix\Lego\Settings\AppSettings;
 use Illuminate\Validation\Rule;
-use VendorName\Skeleton\Actions\SkeletonAction;
+use Astrogoat\ZeroSsl\Actions\ZeroSslAction;
 
-class SkeletonSettings extends AppSettings
+class ZeroSslSettings extends AppSettings
 {
     // public string $url;
 
@@ -18,7 +18,7 @@ class SkeletonSettings extends AppSettings
     }
 
     // protected static array $actions = [
-    //     SkeletonAction::class,
+    //     ZeroSslAction::class,
     // ];
 
     // public static function encrypted(): array
@@ -28,11 +28,11 @@ class SkeletonSettings extends AppSettings
 
     public function description(): string
     {
-        return 'Interact with Skeleton.';
+        return 'Interact with ZeroSsl.';
     }
 
     public static function group(): string
     {
-        return 'skeleton';
+        return 'zero-ssl';
     }
 }

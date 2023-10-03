@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Astrogoat\ZeroSsl\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ZeroSslCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'zero-ssl';
 
     public $description = 'My command';
 

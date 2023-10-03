@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "astrogoat/zero-ssl",
+    "description": "A ZeroSsl app for Strata",
     "keywords": [
-        ":vendor_name",
+        "astrogoat",
         "laravel",
-        ":package_slug"
+        "zero-ssl"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/astrogoat/zero-ssl",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Kristoffer Tonning",
+            "email": "tonning@gmail.com",
             "role": "Developer"
         }
     ],
@@ -37,13 +37,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Astrogoat\\ZeroSsl\\": "src",
+            "Astrogoat\\ZeroSsl\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Astrogoat\\ZeroSsl\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -51,15 +51,18 @@
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Astrogoat\\ZeroSsl\\ZeroSslServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "ZeroSsl": "Astrogoat\\ZeroSsl\\ZeroSslFacade"
             }
         }
     },
