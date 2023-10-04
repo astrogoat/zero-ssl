@@ -2,33 +2,23 @@
 
 namespace Astrogoat\ZeroSsl\Settings;
 
+use Astrogoat\ZeroSsl\Peripherals\PkiValidationFiles;
 use Helix\Lego\Settings\AppSettings;
-use Illuminate\Validation\Rule;
-use Astrogoat\ZeroSsl\Actions\ZeroSslAction;
 
 class ZeroSslSettings extends AppSettings
 {
-    // public string $url;
+    protected array $peripherals = [
+        PkiValidationFiles::class,
+    ];
 
-    public function rules(): array
+    public function name(): string
     {
-        return [
-            // 'url' => Rule::requiredIf($this->enabled === true),
-        ];
+        return 'Zero SSL';
     }
-
-    // protected static array $actions = [
-    //     ZeroSslAction::class,
-    // ];
-
-    // public static function encrypted(): array
-    // {
-    //     return ['access_token'];
-    // }
 
     public function description(): string
     {
-        return 'Interact with ZeroSsl.';
+        return 'Interact with Zero SSL.';
     }
 
     public static function group(): string
