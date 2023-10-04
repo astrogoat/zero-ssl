@@ -3,12 +3,12 @@
 namespace Astrogoat\ZeroSsl;
 
 use Astrogoat\ZeroSsl\Peripherals\PkiValidationFiles;
+use Astrogoat\ZeroSsl\Settings\ZeroSslSettings;
 use Helix\Lego\Apps\App;
 use Helix\Lego\LegoManager;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Astrogoat\ZeroSsl\Settings\ZeroSslSettings;
 
 class ZeroSslServiceProvider extends PackageServiceProvider
 {

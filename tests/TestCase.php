@@ -2,9 +2,9 @@
 
 namespace Astrogoat\ZeroSsl\Tests;
 
+use Astrogoat\ZeroSsl\ZeroSslServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Astrogoat\ZeroSsl\ZeroSslServiceProvider;
 
 class TestCase extends Orchestra
 {
