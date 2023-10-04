@@ -19,7 +19,7 @@ class PkiValidationFiles extends Peripheral
 
     protected string $path = '.well-known/pki-validation';
 
-    public function title() : string
+    public function title(): string
     {
         return 'PKI Validation';
     }
