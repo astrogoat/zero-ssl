@@ -1,4 +1,4 @@
-@php use Helix\Fabrick\Icon;use Illuminate\Support\Str; @endphp
+@php use Helix\Fabrick\Icon;use Illuminate\Support\Str;use Astrogoat\ZeroSsl\Settings\ZeroSslSettings; @endphp
 <div class="space-y-10">
     <x-fab::layouts.panel
         title="Upload PKI Validation File"
@@ -7,13 +7,13 @@
             wire:submit.prevent="save"
             class="flex justify-between items-center"
         >
-            <input type="file" wire:model="validation_file">
+            <input type="file" wire:model="validationFile">
 
-            @error('validation_file') <span class="error">{{ $message }}</span> @enderror
+            @error('validationFile') <span class="error">{{ $message }}</span> @enderror
 
             <x-fab::elements.button
                 type="submit"
-                :disabled="! $validation_file"
+                :disabled="! $validationFile || blank(settings(ZeroSslSettings::class, 'filesystem_disk'))"
             >
                 Upload
                 <x-fab::elements.icon

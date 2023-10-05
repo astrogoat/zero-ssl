@@ -11,6 +11,6 @@ class PkiValidationController
     {
         abort_unless(ZeroSslSettings::isEnabled(), 404);
 
-        return Storage::get("/.well-known/pki-validation/{$id}");
+        return Storage::disk(app(ZeroSslSettings::class)->filesystem_disk)->get("/.well-known/pki-validation/{$id}");
     }
 }

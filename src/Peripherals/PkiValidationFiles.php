@@ -2,9 +2,11 @@
 
 namespace Astrogoat\ZeroSsl\Peripherals;
 
+use Astrogoat\ZeroSsl\Settings\ZeroSslSettings;
 use Helix\Fabrick\Notification;
 use Helix\Lego\Http\Livewire\Traits\ProvidesFeedback;
 use Helix\Lego\Settings\Peripherals\Peripheral;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,9 +17,17 @@ class PkiValidationFiles extends Peripheral
     use WithFileUploads;
     use ProvidesFeedback;
 
-    public $validation_file;
+    public $validationFile;
 
     protected string $path = '.well-known/pki-validation';
+    protected Filesystem $filesystem;
+    protected string $disk;
+
+    public function boot()
+    {
+        $this->disk = app(ZeroSslSettings::class)->filesystem_disk;
+        $this->filesystem = Storage::disk($this->disk);
+    }
 
     public function title(): string
     {
@@ -26,7 +36,7 @@ class PkiValidationFiles extends Peripheral
 
     public function getExistingValidationFiles(): array|Collection
     {
-        return collect(Storage::allFiles($this->path))
+        return collect($this->filesystem->allFiles($this->path))
             ->map(fn ($fileName) => Str::after($fileName, $this->path . '/'));
     }
 
@@ -37,7 +47,7 @@ class PkiValidationFiles extends Peripheral
 
     public function deleteValidationFile($fileName)
     {
-        Storage::delete($this->path . '/' . $fileName);
+        $this->filesystem->delete($this->path . '/' . $fileName);
 
         $this->notify(Notification::success('Deleted')->autoDismiss());
     }
@@ -45,14 +55,14 @@ class PkiValidationFiles extends Peripheral
     public function save()
     {
         $this->validate([
-            'validation_file' => 'max:1024', // 1MB Max
+            'validationFile' => 'max:1024', // 1MB Max
         ]);
 
-        $this->validation_file->storeAs($this->path, $this->validation_file->getClientOriginalName());
+        $this->validationFile->storeAs($this->path, $this->validationFile->getClientOriginalName(), $this->disk);
 
         $this->notify(Notification::success('Uploaded', 'PKI Validation file has been successfully uploaded')->autoDismiss());
 
-        $this->validation_file = null;
+        $this->validationFile = null;
     }
 
     public function render()
