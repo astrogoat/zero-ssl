@@ -1,15 +1,9 @@
 <?php
-// config for Astrogoat/ZeroSsl
 
 return [
-    /*
-     * If you want to override the automatic injection of views
-     * into some areas of your application so you to include
-     * them yourself then you disable each in this array.
-     */
-    'include-frontend-views' => [
-        'head' => true,
-        'body' => true,
-        'end' => true,
+    'pki_validation' => [
+        'central' => [
+            'filesystem_disk' => env('ZERO_SSL_PKI_VALIDATION_CENTRAL_DISK', 'local'),
+        ]
     ]
 ];
